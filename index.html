@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BARBER HOUSE — Барбершоп в Пятигорске</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #111111;
+            color: #ffffff;
+            line-height: 1.5;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Кнопка */
+        .button {
+            display: inline-block;
+            width: 100%;
+            padding: 16px 20px;
+            background: #c9a45c;
+            color: #111111;
+            text-align: center;
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: 0.2s;
+        }
+
+        .button:hover {
+            background: #e0bc76;
+        }
+
+        /* Первый экран */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            padding: 50px 0;
+            background:
+                linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.85)),
+                #222222;
+        }
+
+        .hero-content {
+            width: 100%;
+        }
+
+        .label {
+            color: #c9a45c;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 48px;
+            line-height: 1;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            color: #cccccc;
+            font-size: 18px;
+            margin-bottom: 30px;
+            max-width: 550px;
+        }
+
+        /* Общие секции */
+        section {
+            padding: 70px 0;
+        }
+
+        h2 {
+            font-size: 32px;
+            margin-bottom: 35px;
+        }
+
+        /* Услуги */
+        .services {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .service {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 20px;
+            background: #1c1c1c;
+            border-radius: 8px;
+        }
+
+        .service-name {
+            color: #eeeeee;
+        }
+
+        .price {
+            color: #c9a45c;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        /* Преимущества */
+        .advantages {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .advantage {
+            padding: 25px;
+            background: #1c1c1c;
+            border-radius: 8px;
+        }
+
+        .advantage h3 {
+            margin-bottom: 8px;
+            font-size: 19px;
+        }
+
+        .advantage p {
+            color: #aaaaaa;
+        }
+
+        /* Фотографии */
+        .gallery {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .photo {
+            min-height: 180px;
+            background: #292929;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #777777;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Отзывы */
+        .reviews {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .review {
+            padding: 25px;
+            background: #1c1c1c;
+            border-radius: 8px;
+        }
+
+        .review p {
+            color: #dddddd;
+            margin-bottom: 12px;
+        }
+
+        .review span {
+            color: #c9a45c;
+            font-size: 14px;
+        }
+
+        /* Контакты */
+        .contacts {
+            background: #1c1c1c;
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        .contact-item {
+            margin-bottom: 18px;
+        }
+
+        .contact-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .contact-title {
+            color: #888888;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .contact-value {
+            font-size: 18px;
+        }
+
+        /* Нижний блок */
+        .cta {
+            text-align: center;
+            background: #c9a45c;
+            color: #111111;
+        }
+
+        .cta h2 {
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            margin-bottom: 25px;
+        }
+
+        .cta .button {
+            background: #111111;
+            color: #ffffff;
+        }
+
+        /* Подвал */
+        footer {
+            padding: 25px 20px;
+            text-align: center;
+            color: #666666;
+            font-size: 14px;
+        }
+
+        /* Адаптация под большие экраны */
+        @media (min-width: 700px) {
+            .button {
+                width: auto;
+                min-width: 220px;
+            }
+
+            .advantages {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .gallery {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .hero {
+                min-height: 75vh;
+            }
+
+            h1 {
+                font-size: 64px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Первый экран -->
+    <header class="hero">
+        <div class="container hero-content">
+            <div class="label">ПЯТИГОРСК • BARBERSHOP</div>
+
+            <h1>BARBER<br>HOUSE</h1>
+
+            <p>
+                Мужские стрижки, борода и стиль.
+                Чёткий результат без лишнего.
+            </p>
+
+            <a href="#contacts" class="button">
+                Записаться
+            </a>
+        </div>
+    </header>
+
+
+    <!-- Услуги -->
+    <section>
+        <div class="container">
+
+            <h2>Услуги</h2>
+
+            <div class="services">
+
+                <div class="service">
+                    <div class="service-name">
+                        Мужская стрижка
+                    </div>
+                    <div class="price">
+                        1 200 ₽
+                    </div>
+                </div>
+
+                <div class="service">
+                    <div class="service-name">
+                        Стрижка бороды
+                    </div>
+                    <div class="price">
+                        700 ₽
+                    </div>
+                </div>
+
+                <div class="service">
+                    <div class="service-name">
+                        Стрижка + борода
+                    </div>
+                    <div class="price">
+                        1 700 ₽
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- Преимущества -->
+    <section>
+        <div class="container">
+
+            <h2>Почему мы</h2>
+
+            <div class="advantages">
+
+                <div class="advantage">
+                    <h3>01. Опыт</h3>
+                    <p>
+                        Работаем с мужскими стрижками
+                        и бородой каждый день.
+                    </p>
+                </div>
+
+                <div class="advantage">
+                    <h3>02. Атмосфера</h3>
+                    <p>
+                        Спокойное место, где можно
+                        расслабиться и привести себя в порядок.
+                    </p>
+                </div>
+
+                <div class="advantage">
+                    <h3>03. Результат</h3>
+                    <p>
+                        Подбираем стрижку под внешность,
+                        стиль и образ жизни.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- Галерея -->
+    <section>
+        <div class="container">
+
+            <h2>Наши работы</h2>
+
+            <div class="gallery">
+
+                <div class="photo">
+                    Фото работы №1
+                </div>
+
+                <div class="photo">
+                    Фото работы №2
+                </div>
+
+                <div class="photo">
+                    Фото работы №3
+                </div>
+
+                <div class="photo">
+                    Фото работы №4
+                </div>
+
+                <div class="photo">
+                    Фото работы №5
+                </div>
+
+                <div class="photo">
+                    Фото работы №6
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- Отзывы -->
+    <section>
+        <div class="container">
+
+            <h2>Отзывы</h2>
+
+            <div class="reviews">
+
+                <div class="review">
+                    <p>
+                        «Наконец-то нашёл мастера, который
+                        понял, какую стрижку я хочу.»
+                    </p>
+                    <span>— Максим</span>
+                </div>
+
+                <div class="review">
+                    <p>
+                        «Отличная атмосфера и аккуратная работа.
+                        Теперь хожу только сюда.»
+                    </p>
+                    <span>— Артём</span>
+                </div>
+
+                <div class="review">
+                    <p>
+                        «Стрижка + борода — всё сделали
+                        быстро и качественно.»
+                    </p>
+                    <span>— Дмитрий</span>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- Контакты -->
+    <section id="contacts">
+        <div class="container">
+
+            <h2>Контакты</h2>
+
+            <div class="contacts">
+
+                <div class="contact-item">
+                    <div class="contact-title">
+                        Адрес
+                    </div>
+                    <div class="contact-value">
+                        Пятигорск, центр города
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-title">
+                        Телефон
+                    </div>
+                    <div class="contact-value">
+                        +7 (900) 000-00-00
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-title">
+                        Время работы
+                    </div>
+                    <div class="contact-value">
+                        Ежедневно, 10:00–21:00
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- Финальный призыв -->
+    <section class="cta">
+
+        <div class="container">
+
+            <h2>Готов к новой стрижке?</h2>
+
+            <p>
+                Выберите удобное время и запишитесь к мастеру.
+            </p>
+
+            <a href="#contacts" class="button">
+                Записаться
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- Подвал -->
+    <footer>
+        © 2026 BARBER HOUSE · Пятигорск
+    </footer>
+
+</body>
+</html>
